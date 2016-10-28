@@ -1,12 +1,13 @@
 //
 //  DetailViewController.swift
-//  Project1
+//  Project3
 //
 //  Created by Blue on 10/16/16.
 //  Copyright © 2016 Blue. All rights reserved.
 //
 
 import UIKit
+import Social
 
 class DetailViewController: UIViewController {
 
@@ -16,6 +17,7 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         title = selectedImage
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareTapped))
         super.viewDidLoad()
         
         if let imageToLoad = selectedImage {
@@ -33,6 +35,18 @@ class DetailViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.hidesBarsOnTap = false 
+    }
+    
+    func shareTapped() {
+        /*let vc = UIActivityViewController(activityItems: [imageView.image!], applicationActivities: [])
+        vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        present(vc, animated: true)*/
+        
+        if let vc = SLComposeViewController(forServiceType: SLServiceTypeFacebook) {
+            vc.setInitialText("Look at this great picture!")
+            vc.add(URL(string: "http://www.photolib.noaa.gov/nssl"))
+            present(vc, animated: true)
+        }
     }
 
     override func didReceiveMemoryWarning() {

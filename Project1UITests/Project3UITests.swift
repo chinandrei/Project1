@@ -1,6 +1,6 @@
 //
-//  Project1UITests.swift
-//  Project1UITests
+//  Project3UITests.swift
+//  Project3UITests
 //
 //  Created by Blue on 10/11/16.
 //  Copyright © 2016 Blue. All rights reserved.
@@ -8,7 +8,7 @@
 
 import XCTest
 
-class Project1UITests: XCTestCase {
+class Project3UITests: XCTestCase {
         
     override func setUp() {
         super.setUp()
